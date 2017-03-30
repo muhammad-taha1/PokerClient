@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Ellipse?>
+
+<AnchorPane prefHeight="500.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.address.view.GameOverviewController">
+   <children>
+      <SplitPane dividerPositions="0.7188755020080321" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="664.0">
+               <children>
+                  <Ellipse layoutX="323.0" layoutY="189.0" radiusX="225.0" radiusY="143.0" stroke="BLACK" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#123351" />
+                              <Stop color="#123351" offset="0.19540229885057467" />
+                              <Stop color="#02012f" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Ellipse>
+                  <ImageView fx:id="potCard1" fitHeight="70.0" fitWidth="53.0" layoutX="168.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imgs/cards/2c.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="potCard2" fitHeight="70.0" fitWidth="53.0" layoutX="229.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imgs/cards/2c.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="potCard3" fitHeight="70.0" fitWidth="53.0" layoutX="292.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imgs/cards/2c.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="potCard4" fitHeight="70.0" fitWidth="53.0" layoutX="357.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="potCard5" fitHeight="70.0" fitWidth="53.0" layoutX="421.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ButtonBar layoutX="367.0" layoutY="65.0" prefHeight="54.0" prefWidth="248.0">
+                    <buttons>
+                      <Button fx:id="check" mnemonicParsing="false" text="Check" />
+                        <Button fx:id="fold" mnemonicParsing="false" text="Fold" />
+                        <Button fx:id="bet" mnemonicParsing="false" onAction="#betAction" text="Bet" />
+                    </buttons>
+                  </ButtonBar>
+                  <Label layoutX="14.0" layoutY="6.0" text="Hand cards" />
+                  <Label layoutX="301.0" layoutY="48.0" text="Funds: $" />
+                  <Label layoutX="301.0" layoutY="16.0" text="Bet Amount:" />
+                  <Label fx:id="funds" layoutX="346.0" layoutY="48.0" text="0" />
+                  <ImageView fx:id="card1" fitHeight="103.0" fitWidth="91.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imgs/cards/2d.gif" />
+                     </image></ImageView>
+                  <ImageView fx:id="card2" fitHeight="103.0" fitWidth="91.0" layoutX="99.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="betValue" layoutX="379.0" layoutY="11.0" text="0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
