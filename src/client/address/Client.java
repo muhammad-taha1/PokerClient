@@ -38,6 +38,7 @@ public class Client {
 		// give controller to main app
 		controller = loader.getController();
 		controller.setMainApp(mainApp);
+		controller.setName(name);
 
 		Platform.setImplicitExit(false);
 		startServerComm(client);
@@ -71,6 +72,12 @@ public class Client {
 
 							if (serverMsg.equalsIgnoreCase("Start game")) {
 								controller.loadingOff();
+							}
+
+							if (serverMsg.contains("numberOfPlayers")) {
+								String[] numPlayers = serverMsg.split(" ");
+								controller.showPlayers(numPlayers[1]);
+
 							}
 
 							if (serverMsg.equalsIgnoreCase("TOKEN")) {

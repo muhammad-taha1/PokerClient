@@ -58,6 +58,35 @@ public class GameOverviewController {
 	@FXML
 	private Label pot;
 
+	@FXML
+	private Label nameTag;
+
+	@FXML
+	private ImageView p1;
+
+	@FXML
+	private ImageView p2;
+
+	@FXML
+	private ImageView p3;
+
+	@FXML
+	private ImageView p4;
+
+	@FXML
+	private ImageView p5;
+
+	@FXML
+	private ImageView p6;
+
+	@FXML
+	private ImageView p7;
+
+	@FXML
+	private ImageView you;
+
+
+
 	private String betMsg = "";
 
 	private DataOutputStream out;
@@ -236,6 +265,25 @@ public class GameOverviewController {
 
 		alert.showAndWait();
 		return null;
+
+	}
+
+	public void setName(String name) {
+		this.nameTag.setText(name);
+	}
+
+	public void showPlayers(String numPlayers) {
+		int players = Integer.valueOf(numPlayers);
+
+		System.out.println("players = " + players);
+
+		if (players < 8) { p7.setDisable(true); p7.setVisible(false);}
+		if (players < 7) { p6.setDisable(true); p6.setVisible(false);}
+		if (players < 6) { p5.setDisable(true); p5.setVisible(false);}
+		if (players < 5) { p4.setDisable(true); p4.setVisible(false);}
+		if (players < 4) { p3.setDisable(true); p3.setVisible(false);}
+		if (players < 3) { p2.setDisable(true); p2.setVisible(false);}
+		if (players < 2) { p1.setDisable(true); p1.setVisible(false);}
 
 	}
 }
