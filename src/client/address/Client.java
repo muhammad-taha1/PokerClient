@@ -69,6 +69,10 @@ public class Client {
 							String serverMsg = in.readUTF();
 							System.out.println("Server says: " + serverMsg);
 
+							if (serverMsg.equalsIgnoreCase("Start game")) {
+								controller.loadingOff();
+							}
+
 							if (serverMsg.equalsIgnoreCase("TOKEN")) {
 								// immediately after token server will also send us our budget and last betted amount
 								int funds = in.readInt();
@@ -79,6 +83,16 @@ public class Client {
 
 								// block until work is complete
 								updateUserValues.get();
+							}
+
+							if (serverMsg.contains("POT")) {
+								String[] pot = serverMsg.split(" ");
+
+								FutureTask<Void> updatePot = new FutureTask<Void>(() -> controller.updatePot(pot[1]));
+								Platform.runLater(updatePot);
+
+								// block until work is complete
+								updatePot.get();
 							}
 
 							if (serverMsg.contains("hand")) {
@@ -92,9 +106,32 @@ public class Client {
 								controller.updatePotImage(potCards[1]);
 							}
 
+							if (serverMsg.contains("updateWinnings")) {
+								int funds = in.readInt();
+								FutureTask<Void> updatePot = new FutureTask<Void>(() -> controller.addWinnings(funds));
+								Platform.runLater(updatePot);
+								// block until work is complete
+								updatePot.get();
 
+								controller.disableButtons();
+							}
 
+							if (serverMsg.contains("round over")) {
+								controller.clearPotImages();
 
+								FutureTask<Void> updatePot = new FutureTask<Void>(() -> controller.updatePot("0"));
+								Platform.runLater(updatePot);
+								// block until work is complete
+								updatePot.get();
+
+							}
+
+							if (serverMsg.contains("won with")) {
+								FutureTask<Void> winMsg = new FutureTask<Void>(() -> controller.showWinMsg(serverMsg));
+								Platform.runLater(winMsg);
+								winMsg.get();
+								System.out.println("alert winning complete!!");
+							}
 						}
 					}
 				}
